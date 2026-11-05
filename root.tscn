@@ -1,52 +1,6 @@
 [gd_scene format=3 uid="uid://88wsrkbfkyis"]
 
-[ext_resource type="Texture2D" uid="uid://b52iw7i5r1daj" path="res://assets/IMG/avator.png" id="1_pq8q7"]
-[ext_resource type="Script" uid="uid://caiwui538ovx5" path="res://scripts/player/player.gd" id="1_pyidc"]
-[ext_resource type="Script" uid="uid://c7him70q3gqym" path="res://scripts/titleBuffer.gd" id="4_28aoi"]
-[ext_resource type="Script" uid="uid://boj1ygpl28bjb" path="res://scripts/attack.gd" id="4_jnlp7"]
-[ext_resource type="AudioStream" uid="uid://bo40hw8386erc" path="res://assets/bgm/editor__1539857.ogg" id="5_jnlp7"]
+[ext_resource type="Script" uid="uid://bcdqv1nsx2e44" path="res://scripts/ctx/boot.gd" id="1_pq8q7"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pyidc"]
-size = Vector2(190, 199)
-
-[node name="root" type="Node2D" unique_id=1133014946]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=312767058]
-
-[node name="title" type="Label" parent="CanvasLayer" unique_id=1081043599]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -554.5
-offset_top = 129.0
-offset_right = 554.5
-offset_bottom = 215.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 30
-text = "TEST TEXT"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("4_28aoi")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1152690720]
-stream = ExtResource("5_jnlp7")
-volume_db = -20.0
-autoplay = true
-
-[node name="Attack" type="Node" parent="." unique_id=524316460]
-script = ExtResource("4_jnlp7")
-
-[node name="Player" type="CharacterBody2D" parent="." unique_id=2092438420]
-position = Vector2(-457, 12)
-script = ExtResource("1_pyidc")
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1170452325]
-position = Vector2(0.5, 1.5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1018973545]
-position = Vector2(-0.5, -6.5)
-shape = SubResource("RectangleShape2D_pyidc")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=567166305]
-position = Vector2(-1.5, -5.5)
-texture = ExtResource("1_pq8q7")
+[node name="Node2D" type="Node2D" unique_id=1239942775]
+script = ExtResource("1_pq8q7")

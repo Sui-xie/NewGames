@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c36fsah44nhij"]
+
+[ext_resource type="Script" uid="uid://c7him70q3gqym" path="res://scripts/ctx/ui/titleBuffer.gd" id="1_4fdtc"]
+[ext_resource type="Script" uid="uid://d0vty1afxxauj" path="res://scripts/ctx/ui.gd" id="1_e0myg"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1427578230]
+script = ExtResource("1_e0myg")
+
+[node name="title" type="Label" parent="." unique_id=1656918761]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -554.5
+offset_top = 129.0
+offset_right = 554.5
+offset_bottom = 215.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "TEST TEXT"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_4fdtc")

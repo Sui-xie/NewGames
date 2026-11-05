@@ -12,7 +12,7 @@ var cooling = 0
 var collingTime = 0.8
 var hp:float = 1000
 var team:int = 1
-var id:int;
+var id;
 var deadCallback:Callable;
 var client:bool = false;
 var state:String = 'init'
@@ -29,7 +29,6 @@ func _process(delta: float) -> void:
 		cooling -= delta
 		if cooling < 0:cooling = 0
 	
-
 func _input(e):
 	shoot(e)
 	if e is InputEventMouseButton:
@@ -39,6 +38,7 @@ func _input(e):
 			change_zoom(-zoomSpeed)
 	
 func _ready() -> void:
+	#print("[INFO]PlayerReady")
 	if(id == null):
 		print("[ERROR]Player id is Null")
 		queue_free()
@@ -66,8 +66,6 @@ func shoot(e:InputEvent):
 				add_child(b)
 				b.global_position = self.global_position
 				cooling = collingTime
-				
-				
 
 func change_zoom(z):
 	if not(client):return#不在客户端运行直接不管这个

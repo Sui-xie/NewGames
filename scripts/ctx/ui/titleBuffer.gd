@@ -1,9 +1,11 @@
 ﻿extends Label
+class_name TitleBuffer
 
 var buffer: Array[Array] = [
 		['欢迎来到我的神秘游戏！',1]
 	]
 var t:float = 0
+var ctx:Ctx
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

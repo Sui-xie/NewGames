@@ -1,26 +1,33 @@
-﻿extends Node
+extends Node
 class_name PlayerMgr
 
-var ctx:Ctx;
-var player = []
+var players = []
+var root:Node2D = ctx.getMainScene()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	addPlayer(0)
+	print("[INFO]PlayerMgr Ready")
+	if(root == null):
+		push_error('[ERROR]root is null')
+		get_tree().quit()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-func addPlayer(id):
-	var p1 = load('res://scritps/player/player.gd')
-	var p:PlayerMgr = p1.instance()
-	p.client = true
+func addPlayer(id,client:bool = false):
+	#print("[INFO]即将添加一个玩家到节点:")
+	var p1: PackedScene = load('res://scene/player.tscn')
+	var p:Player = p1.instantiate()
+	p.client = client
 	p.id = id
-	p.deadCallback(playerDead)
-	ctx.root.add_child(p)
-	player[id] = p
+	p.deadCallback = playerDead
+	root.add_child(p)
+	if players.size() < id + 1:
+		players.resize(id + 1)
+	players[id] = p
+	
 	
 func playerDead(id):
-	player[id] = null
+	players[id] = null
