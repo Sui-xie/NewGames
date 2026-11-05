@@ -1,4 +1,4 @@
-extends Area2D
+extends CharacterBody2D
 
 var hp:int = 1000
 var callBack:Callable
@@ -11,14 +11,12 @@ var team = 0
 
 func _ready() -> void:
 	if player == null:
-		player = getPlayer()
+		getPlayer()
 	print(self.name)
 
 func getPlayer():
-	for i in ctx.players.size():
-		if ctx.players[i] == null:
-			continue
-		return ctx.players[i]#为了以后实现复杂的索敌预留的
+	var players:PlayerMgr =	ctx.getService('playerMgr')
+	player = players.getPlayer(0)
 
 func _process(delta: float) -> void:
 	ai(delta)
@@ -33,7 +31,8 @@ func changeHp(health):
 		
 func ai(delta:float):
 	var deg := (self.global_position - player.global_position).angle() + deg_to_rad(180)
-	self.position += Vector2.from_angle(deg) * speed * delta
+	velocity = Vector2.from_angle(deg) * speed
+	move_and_slide()
 	shoot()
 	
 

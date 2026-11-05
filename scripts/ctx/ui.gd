@@ -1,9 +1,9 @@
 ﻿extends CanvasLayer
 
-var titleBuffer:TitleBuffer
+@export var titleBuffer:TitleBuffer
 
 func _ready() -> void:
-	titleBuffer = get_node('/title')
+	pass
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

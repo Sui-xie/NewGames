@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://c7him70q3gqym" path="res://scripts/ctx/ui/titleBuffer.gd" id="1_4fdtc"]
 [ext_resource type="Script" uid="uid://d0vty1afxxauj" path="res://scripts/ctx/ui.gd" id="1_e0myg"]
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=1427578230]
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1427578230 node_paths=PackedStringArray("titleBuffer")]
 script = ExtResource("1_e0myg")
+titleBuffer = NodePath("title")
 
 [node name="title" type="Label" parent="." unique_id=1656918761]
 anchors_preset = 5

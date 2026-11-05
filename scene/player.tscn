@@ -1,24 +1,43 @@
 [gd_scene format=3 uid="uid://2aax3kom5fv1"]
 
 [ext_resource type="Script" uid="uid://caiwui538ovx5" path="res://scripts/player/player.gd" id="1_hjaqi"]
-[ext_resource type="Texture2D" uid="uid://b52iw7i5r1daj" path="res://assets/IMG/avator.png" id="2_fvtld"]
+[ext_resource type="Texture2D" uid="uid://optychjbwqhc" path="res://assets/IMG/哈！.jpg" id="2_hjaqi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pyidc"]
-size = Vector2(68, 69)
+size = Vector2(100, 100)
 
-[node name="Player" type="CharacterBody2D" unique_id=1862613727]
+[node name="Player" type="CharacterBody2D" unique_id=1862613727 node_paths=PackedStringArray("nameLabel", "healthBar")]
+collision_layer = 2
 script = ExtResource("1_hjaqi")
-metadata/_edit_horizontal_guides_ = [95.0]
-metadata/_edit_vertical_guides_ = [95.0]
+nameLabel = NodePath("Label")
+healthBar = NodePath("ProgressBar")
+metadata/_edit_horizontal_guides_ = [95.0, 100.0]
+metadata/_edit_vertical_guides_ = [95.0, 100.0]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1551384539]
 position = Vector2(0.5, 1.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1452549003]
-position = Vector2(-1, -0.5)
+position = Vector2(3.8146973e-06, 0)
 shape = SubResource("RectangleShape2D_pyidc")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1729384052]
-position = Vector2(-1, 0)
-scale = Vector2(0.35602096, 0.35602093)
-texture = ExtResource("2_fvtld")
+[node name="Label" type="Label" parent="." unique_id=191140649]
+offset_left = -280.0
+offset_top = -140.0
+offset_right = 295.0
+offset_bottom = -68.0
+theme_override_font_sizes/font_size = 40
+text = "测试文本"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=242200211]
+offset_left = -109.0
+offset_top = -83.0
+offset_right = 105.0
+offset_bottom = -55.0
+
+[node name="哈！" type="Sprite2D" parent="." unique_id=1147042313]
+position = Vector2(3.8146973e-06, 3.8146973e-06)
+scale = Vector2(0.07974482, 0.07974482)
+texture = ExtResource("2_hjaqi")

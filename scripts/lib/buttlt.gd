@@ -26,12 +26,15 @@ func _process(delta: float) -> void:
 	self.position += Vector2.from_angle(rot) * speed * delta
 	
 func body_enter(b:Node) -> void:
+	if "meta" in b:
+		if "noEntry" in b.meta:
+			queue_free()
+			return
 	if b == shooter : return
 	if not('team' in b):return
 	if not('team' in shooter):return
 	if b.team == shooter.team:return
 	if b.has_method('changeHp'):
-		print("扣血:",damage,"剩余:",b.hp)
 		b.changeHp(damage)
 	else:
 		print("[WARN]Not found Method: changeHp,Node Name is:",b.name)

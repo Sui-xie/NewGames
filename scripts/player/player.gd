@@ -2,6 +2,8 @@ extends CharacterBody2D
 class_name Player
 
 @export var speed: float = 200
+@export var nameLabel:Label
+@export var healthBar:ProgressBar
 var cam:Camera2D
 var zoom: Vector2 = Vector2(1,1)
 var zoomSpeed: float = 0.05
@@ -9,8 +11,9 @@ var maxZoom: Vector2 = Vector2(4,4)
 var minZoom: Vector2 = Vector2(0.1,0.1)
 var bullet: PackedScene = preload('res://scene/bullet.tscn')
 var cooling = 0
-var collingTime = 0.8
+var collingTime = 0.3
 var hp:float = 1000
+var maxHp:float = 1000
 var team:int = 1
 var id;
 var deadCallback:Callable;
@@ -25,12 +28,14 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(delta: float) -> void:
+	nameLabel.text = "玩家ID:{id}".format({"id":id})
+	healthBar.value = (hp / maxHp) * 100
 	if cooling != 0:
 		cooling -= delta
 		if cooling < 0:cooling = 0
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):shoot()
 	
 func _input(e):
-	shoot(e)
 	if e is InputEventMouseButton:
 		if e.button_index == MOUSE_BUTTON_WHEEL_UP:
 			change_zoom(zoomSpeed)
@@ -38,7 +43,7 @@ func _input(e):
 			change_zoom(-zoomSpeed)
 	
 func _ready() -> void:
-	#print("[INFO]PlayerReady")
+	print("[INFO]Player:",id," Ready")
 	if(id == null):
 		print("[ERROR]Player id is Null")
 		queue_free()
@@ -52,20 +57,17 @@ func _ready() -> void:
 	state = 'readay'
 
 
-func shoot(e:InputEvent):
+func shoot():
 	if cooling != 0:return
-	if e is InputEventMouseButton:
-		if e.button_index == MOUSE_BUTTON_LEFT:
-			if e.pressed:
-				var b:Buttlt = bullet.instantiate()
-				b.shooter = self
-				var r := (get_global_mouse_position() - global_position).angle() 
-				b.rot = r
-				b.rotation = r - deg_to_rad(-25)#偏二十五度，因为我懒得去修图
-				b.damage = 100
-				add_child(b)
-				b.global_position = self.global_position
-				cooling = collingTime
+	var b:Buttlt = bullet.instantiate()
+	b.shooter = self
+	var r := (get_global_mouse_position() - global_position).angle() 
+	b.rot = r
+	b.rotation = r - deg_to_rad(-25)#偏二十五度，因为我懒得去修图
+	b.damage = 100
+	add_child(b)
+	b.global_position = self.global_position
+	cooling = collingTime
 
 func change_zoom(z):
 	if not(client):return#不在客户端运行直接不管这个
