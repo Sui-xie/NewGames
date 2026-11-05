@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://2aax3kom5fv1"]
+
+[ext_resource type="Script" uid="uid://caiwui538ovx5" path="res://scripts/player/player.gd" id="1_hjaqi"]
+[ext_resource type="Texture2D" uid="uid://b52iw7i5r1daj" path="res://assets/IMG/avator.png" id="2_fvtld"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pyidc"]
+size = Vector2(68, 69)
+
+[node name="Player" type="CharacterBody2D" unique_id=1862613727]
+script = ExtResource("1_hjaqi")
+metadata/_edit_horizontal_guides_ = [95.0]
+metadata/_edit_vertical_guides_ = [95.0]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1551384539]
+position = Vector2(0.5, 1.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1452549003]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_pyidc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1729384052]
+position = Vector2(-1, 0)
+scale = Vector2(0.35602096, 0.35602093)
+texture = ExtResource("2_fvtld")
