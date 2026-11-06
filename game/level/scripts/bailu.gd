@@ -50,6 +50,6 @@ func shoot() -> void:
 	b.rot = r
 	b.rotation = r - deg_to_rad(-25)#偏二十五度，因为我懒得去修图
 	b.damage = 10
-	add_child(b)
+	ctx.currentScene.add_child(b)
 	b.global_position = self.global_position
 	cooling = collingTime

@@ -1,7 +1,7 @@
 extends Node
 class_name MapMgr
 
-var defMap: PackedScene = preload('res://game/level/scene/map.tscn')
+var defMap: PackedScene = preload('res://game/level/map/map.tscn')
 var currentMap = null;
 
 # Called when the node enters the scene tree for the first time.
@@ -18,7 +18,8 @@ func _process(delta: float) -> void:
 func loadDefaultMap():
 	print("[INFO][MapMgr]加载默认地图")
 	var map:Map = defMap.instantiate()
-	var meta = ["noEntry","wall","ground"]
+	var tags:Tags = ctx.tags
+	var meta: Array[String] = [tags.noEntry,tags.mapWall,tags.ground]
 	for i in meta:
 		map.addMeta(i)
 		

@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 func body_enter(b:Node) -> void:
 	#print("[INFO]子弹撞到了:",b.name)
 	if "meta" in b:
-		if "noEntry" in b.meta:
+		if ctx.tags.noEntry in b.meta:
 			queue_free()
 			return
 	if b == shooter : return

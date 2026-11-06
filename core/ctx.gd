@@ -1,7 +1,7 @@
 extends Node
 class_name Ctx
 
-@export var gravity:float = -1600
+@export var gravity: float = -1600
 
 
 const sceneList: Dictionary[String, Variant] = {
@@ -15,11 +15,15 @@ var globalService:Dictionary[String,Node] = {}#全局服务
 var service:Dictionary[String,Node] = {}#普通服务
 var boot:Node2D
 var currentScene:Node2D
+var tags:Tags
 
 const bus = preload("res://core/eventBus.gd")
+const tagsScripts = preload('res://core/interFace/tags.gd')
 
 func _ready() -> void:
-	pass
+	var t = tagsScripts.new()
+	add_child(t)
+	tags = t
 
 func on(event: String, callback:
 	Callable) -> int:return service["eventBus"].on(event,callback)
@@ -55,7 +59,13 @@ func getBoot()->Node2D:
 func getMainScene() -> Node2D:
 	if currentScene == null:print('[WARN]有节点拿到了空的主场景节点')
 	return currentScene
-	
+
+func checkTag(node:Variant,tag:String) ->bool:
+	if 'meta' in node:
+		if tag in node:
+			return true
+	return false
+
 #该方法在boot时禁用,在该方法内禁止使用事件总线
 func switchMainScene(sceneId:String):
 	var sceneName:String;
