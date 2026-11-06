@@ -47,6 +47,8 @@ scale = Vector2(0.07974482, 0.07974482)
 texture = ExtResource("2_hjaqi")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1516253399]
+collision_layer = 128
+collision_mask = 128
 script = ExtResource("3_fvtld")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=762515444]
