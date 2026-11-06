@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://caijq2h5n1n5o" path="res://game/level/scripts/buttlt.gd" id="1_xw300"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cypby"]
-radius = 7.2005434
+radius = 4.966036
 height = 138.87358
 
 [node name="Bullet" type="Area2D" unique_id=500824647]
@@ -17,6 +17,6 @@ rotation = -1.9970777
 shape = SubResource("CapsuleShape2D_cypby")
 
 [node name="钢管" type="Sprite2D" parent="." unique_id=1811979406]
-position = Vector2(-0.99999994, 8.999999)
+position = Vector2(0.9999999, 9)
 scale = Vector2(0.03800677, 0.03800676)
 texture = ExtResource("1_qwydi")

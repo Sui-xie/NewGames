@@ -1,8 +1,8 @@
 extends Node
 
-const playerMgrScripts = preload("res://core/playerMgr.gd")
+const playerMgrScripts = preload("res://game/level/scripts/playerMgr.gd")
 const uiLayer: PackedScene = preload('res://game/level/scene/ui/uiLayer.tscn')
-const mapMgrScripts = preload('res://core/mapMgr.gd')
+const mapMgrScripts = preload('res://game/level/scripts/mapMgr.gd')
 
 const attack = preload('res://game/level/scripts/attack.gd')
 

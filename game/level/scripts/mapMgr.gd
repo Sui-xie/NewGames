@@ -18,7 +18,8 @@ func _process(delta: float) -> void:
 func loadDefaultMap():
 	print("[INFO][MapMgr]加载默认地图")
 	var map:Map = defMap.instantiate()
-	var meta = ["noEntry","wall","ground"]
+	var tags:Tags = ctx.tags
+	var meta: Array[String] = [tags.noEntry,tags.mapWall,tags.ground]
 	for i in meta:
 		map.addMeta(i)
 		
