@@ -1,6 +1,8 @@
 extends Node
 class_name Ctx
 
+@export var gravity:float = -1600
+
 var players := []
 var service:Dictionary[String,Node] = {}
 var root:Node2D

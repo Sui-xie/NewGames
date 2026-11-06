@@ -1,25 +1,6 @@
 [gd_scene format=3 uid="uid://88wsrkbfkyis"]
 
 [ext_resource type="Script" uid="uid://bcdqv1nsx2e44" path="res://scripts/ctx/boot.gd" id="1_pq8q7"]
-[ext_resource type="PackedScene" uid="uid://updfen2abe1g" path="res://scene/block.tscn" id="2_pyidc"]
 
 [node name="Node2D" type="Node2D" unique_id=1239942775]
 script = ExtResource("1_pq8q7")
-
-[node name="Block4" parent="." unique_id=1481412891 instance=ExtResource("2_pyidc")]
-position = Vector2(300, 300)
-
-[node name="Block5" parent="." unique_id=1737926061 instance=ExtResource("2_pyidc")]
-position = Vector2(400, 300)
-
-[node name="Block6" parent="." unique_id=1427239008 instance=ExtResource("2_pyidc")]
-position = Vector2(500, 300)
-
-[node name="Block" parent="." unique_id=1479220787 instance=ExtResource("2_pyidc")]
-position = Vector2(0, 300)
-
-[node name="Block2" parent="." unique_id=1564198117 instance=ExtResource("2_pyidc")]
-position = Vector2(100, 300)
-
-[node name="Block3" parent="." unique_id=1648560001 instance=ExtResource("2_pyidc")]
-position = Vector2(200, 300)

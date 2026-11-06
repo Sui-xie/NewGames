@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bg3gcrxd36ous"]
+
+[ext_resource type="Texture2D" uid="uid://du5gdunoaquvp" path="res://assets/IMG/黄方块.png" id="1_bkhc6"]
+[ext_resource type="Texture2D" uid="uid://b88ku4l27sbvo" path="res://assets/IMG/红方块.png" id="1_ihkbp"]
+[ext_resource type="Script" uid="uid://dysjmjslh4xba" path="res://scripts/lib/map/map.gd" id="2_yyonm"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wnb2"]
+resource_name = "redBlock"
+texture = ExtResource("1_ihkbp")
+texture_region_size = Vector2i(100, 100)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50, -50, 50, -50, 50, 50, -50, 50)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yyonm"]
+resource_name = "yellowBlock"
+texture = ExtResource("1_bkhc6")
+texture_region_size = Vector2i(100, 100)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-50, -50, 50, -50, 50, 50, -50, 50)
+
+[sub_resource type="TileSet" id="TileSet_pq8q7"]
+tile_size = Vector2i(100, 100)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_yyonm")
+sources/0 = SubResource("TileSetAtlasSource_4wnb2")
+
+[node name="Map" type="TileMapLayer" unique_id=917631279]
+tile_set = SubResource("TileSet_pq8q7")
+script = ExtResource("2_yyonm")

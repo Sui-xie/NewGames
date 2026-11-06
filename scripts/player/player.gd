@@ -4,6 +4,8 @@ class_name Player
 @export var speed: float = 200
 @export var nameLabel:Label
 @export var healthBar:ProgressBar
+@export var jumpCheckArea:JumpCheck
+var jumpForce:float = -1000
 var cam:Camera2D
 var zoom: Vector2 = Vector2(1,1)
 var zoomSpeed: float = 0.05
@@ -21,10 +23,9 @@ var client:bool = false;
 var state:String = 'init'
 
 func _physics_process(delta: float) -> void:
-	var direction := Vector2.ZERO
-	direction.x = Input.get_axis("move_left", "move_right")
-	direction.y = Input.get_axis("move_up", "move_down")
-	velocity = direction * speed
+	var direction = Input.get_axis("move_left", "move_right")
+	velocity.x = direction * speed
+	velocity.y -= ctx.gravity*delta
 	move_and_slide()
 
 func _process(delta: float) -> void:
@@ -36,6 +37,10 @@ func _process(delta: float) -> void:
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):shoot()
 	
 func _input(e):
+	if(e is InputEventKey):
+		if(e.keycode == KEY_SPACE):
+			if e.pressed:
+				jump()
 	if e is InputEventMouseButton:
 		if e.button_index == MOUSE_BUTTON_WHEEL_UP:
 			change_zoom(zoomSpeed)
@@ -86,3 +91,9 @@ func dead() -> void:
 	if(deadCallback.is_valid()):
 		deadCallback.call(id)
 	queue_free()
+
+func jump():
+	if jumpCheckArea.jumpCheck():
+		velocity.y = 0
+		velocity.y += jumpForce
+		jumpCheckArea.aJump()

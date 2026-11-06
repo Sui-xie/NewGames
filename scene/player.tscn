@@ -2,15 +2,20 @@
 
 [ext_resource type="Script" uid="uid://caiwui538ovx5" path="res://scripts/player/player.gd" id="1_hjaqi"]
 [ext_resource type="Texture2D" uid="uid://optychjbwqhc" path="res://assets/IMG/哈！.jpg" id="2_hjaqi"]
+[ext_resource type="Script" uid="uid://q4g0tlhps4kw" path="res://scripts/player/jumpCheck.gd" id="3_fvtld"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pyidc"]
 size = Vector2(100, 100)
 
-[node name="Player" type="CharacterBody2D" unique_id=1862613727 node_paths=PackedStringArray("nameLabel", "healthBar")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xa3wl"]
+size = Vector2(98, 2)
+
+[node name="Player" type="CharacterBody2D" unique_id=1862613727 node_paths=PackedStringArray("nameLabel", "healthBar", "jumpCheckArea")]
 collision_layer = 2
 script = ExtResource("1_hjaqi")
 nameLabel = NodePath("Label")
 healthBar = NodePath("ProgressBar")
+jumpCheckArea = NodePath("Area2D")
 metadata/_edit_horizontal_guides_ = [95.0, 100.0]
 metadata/_edit_vertical_guides_ = [95.0, 100.0]
 
@@ -38,6 +43,12 @@ offset_right = 105.0
 offset_bottom = -55.0
 
 [node name="哈！" type="Sprite2D" parent="." unique_id=1147042313]
-position = Vector2(3.8146973e-06, 3.8146973e-06)
 scale = Vector2(0.07974482, 0.07974482)
 texture = ExtResource("2_hjaqi")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1516253399]
+script = ExtResource("3_fvtld")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=762515444]
+position = Vector2(0, 52)
+shape = SubResource("RectangleShape2D_xa3wl")

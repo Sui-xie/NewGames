@@ -26,6 +26,7 @@ func _process(delta: float) -> void:
 	self.position += Vector2.from_angle(rot) * speed * delta
 	
 func body_enter(b:Node) -> void:
+	#print("[INFO]子弹撞到了:",b.name)
 	if "meta" in b:
 		if "noEntry" in b.meta:
 			queue_free()
