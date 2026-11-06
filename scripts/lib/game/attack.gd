@@ -1,5 +1,5 @@
 ﻿extends Node
-var bailu: PackedScene =  preload('res://scene/Bailu.tscn')
+var bailu: PackedScene =  preload('res://scene/other/Bailu.tscn')
 var waveInterval:float = 60
 var nextWaveTime:float = 10
 var t
@@ -7,7 +7,7 @@ var t
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	ctx.emit('addTitle',"已就绪",1)
+	ctx.emit('addTitle',"敌人即将来袭",2)
 	print("[INFO]AttackMgr ready")
 
 

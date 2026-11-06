@@ -3,6 +3,7 @@ class_name Ctx
 
 @export var gravity:float = -1600
 
+
 const sceneList: Dictionary[String, Variant] = {
 	"error":"res://scene/other/errorScene.tscn",
 	"menu":"res://scene/menu/menu.tscn",

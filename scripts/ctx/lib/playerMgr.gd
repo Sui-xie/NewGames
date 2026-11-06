@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 
 func addPlayer(id,client:bool = false):
 	print("[INFO]即将添加一个玩家到节点,ID:",id)
-	var p1: PackedScene = load('res://scene/player.tscn')
+	var p1: PackedScene = load('res://scene/other/player.tscn')
 	var p:Player = p1.instantiate()
 	p.client = client
 	p.id = id

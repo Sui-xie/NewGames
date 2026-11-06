@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://2aax3kom5fv1"]
 
-[ext_resource type="Script" uid="uid://caiwui538ovx5" path="res://scripts/player/player.gd" id="1_hjaqi"]
+[ext_resource type="Script" uid="uid://caiwui538ovx5" path="res://scripts/lib/game/player/player.gd" id="1_hjaqi"]
 [ext_resource type="Texture2D" uid="uid://optychjbwqhc" path="res://assets/IMG/哈！.jpg" id="2_hjaqi"]
-[ext_resource type="Script" uid="uid://q4g0tlhps4kw" path="res://scripts/player/jumpCheck.gd" id="3_fvtld"]
+[ext_resource type="Script" uid="uid://q4g0tlhps4kw" path="res://scripts/lib/game/player/jumpCheck.gd" id="3_fvtld"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pyidc"]
 size = Vector2(100, 100)
