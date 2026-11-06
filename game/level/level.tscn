@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://3kneopj3iugv"]
 
-[ext_resource type="Script" uid="uid://6bofu4vic8n" path="res://scripts/lib/game/gameCore.gd" id="1_xvjqe"]
+[ext_resource type="Script" uid="uid://6bofu4vic8n" path="res://game/level/scripts/gameCore.gd" id="1_xvjqe"]
 
 [node name="Level" type="Node2D" unique_id=574916516]
 script = ExtResource("1_xvjqe")

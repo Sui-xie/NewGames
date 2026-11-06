@@ -1,7 +1,7 @@
-﻿extends Node
+extends Node
 class_name MapMgr
 
-var defMap: PackedScene = preload('res://scene/map/map.tscn')
+var defMap: PackedScene = preload('res://game/level/scene/map.tscn')
 var currentMap = null;
 
 # Called when the node enters the scene tree for the first time.

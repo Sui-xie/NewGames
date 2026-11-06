@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cdawo4msk61ki"]
 
-[ext_resource type="Script" uid="uid://dhbyrqf5syh0p" path="res://scripts/lib/game/bailu.gd" id="1_hnooe"]
+[ext_resource type="Script" uid="uid://dhbyrqf5syh0p" path="res://game/level/scripts/bailu.gd" id="1_hnooe"]
 [ext_resource type="Texture2D" uid="uid://bd7xboiv48nhf" path="res://assets/IMG/白露.jpeg" id="2_lyqr5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cypby"]

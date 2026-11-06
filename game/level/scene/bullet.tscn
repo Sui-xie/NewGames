@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://brfd0de5ypdgw"]
 
 [ext_resource type="Texture2D" uid="uid://ctwbi4cxp6d2w" path="res://assets/IMG/钢管.png" id="1_qwydi"]
-[ext_resource type="Script" uid="uid://caijq2h5n1n5o" path="res://scripts/lib/game/buttlt.gd" id="1_xw300"]
+[ext_resource type="Script" uid="uid://caijq2h5n1n5o" path="res://game/level/scripts/buttlt.gd" id="1_xw300"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cypby"]
 radius = 7.2005434

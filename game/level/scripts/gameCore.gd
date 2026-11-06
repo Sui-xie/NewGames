@@ -1,10 +1,10 @@
-﻿extends Node
+extends Node
 
-const playerMgrScripts = preload("res://scripts/ctx/lib/playerMgr.gd")
-const uiLayer: PackedScene = preload('res://scene/other/uiLayer.tscn')
-const mapMgrScripts = preload('res://scripts/ctx/lib/mapMgr.gd')
+const playerMgrScripts = preload("res://core/playerMgr.gd")
+const uiLayer: PackedScene = preload('res://game/level/scene/ui/uiLayer.tscn')
+const mapMgrScripts = preload('res://core/mapMgr.gd')
 
-const attack = preload('res://scripts/lib/game/attack.gd')
+const attack = preload('res://game/level/scripts/attack.gd')
 
 
 # Called when the node enters the scene tree for the first time.

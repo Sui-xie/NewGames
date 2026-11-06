@@ -5,9 +5,9 @@ class_name Ctx
 
 
 const sceneList: Dictionary[String, Variant] = {
-	"error":"res://scene/other/errorScene.tscn",
-	"menu":"res://scene/menu/menu.tscn",
-	"level":'res://scene/game/level.tscn'
+	"error":"res://game/error/errorScene.tscn",
+	"menu":"res://game/menu/menu.tscn",
+	"level":'res://game/level/level.tscn'
 }
 
 var players := []
@@ -16,7 +16,7 @@ var service:Dictionary[String,Node] = {}#普通服务
 var boot:Node2D
 var currentScene:Node2D
 
-const bus = preload("res://scripts/ctx/lib/eventBus.gd")
+const bus = preload("res://core/eventBus.gd")
 
 func _ready() -> void:
 	pass

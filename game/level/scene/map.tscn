@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://du5gdunoaquvp" path="res://assets/IMG/黄方块.png" id="1_bkhc6"]
 [ext_resource type="Texture2D" uid="uid://b88ku4l27sbvo" path="res://assets/IMG/红方块.png" id="1_ihkbp"]
-[ext_resource type="Script" uid="uid://dysjmjslh4xba" path="res://scripts/lib/map/map.gd" id="2_yyonm"]
+[ext_resource type="Script" uid="uid://dysjmjslh4xba" path="res://game/level/scripts/map.gd" id="2_yyonm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wnb2"]
 resource_name = "redBlock"

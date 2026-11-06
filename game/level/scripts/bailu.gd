@@ -4,7 +4,7 @@ var hp:int = 1000
 var callBack:Callable
 var player:CharacterBody2D
 var speed:float = 150
-var bullet: PackedScene = preload('res://scene/other/bullet.tscn')
+var bullet: PackedScene = preload('res://game/level/scene/bullet.tscn')
 var cooling:float = 0
 var collingTime: float = 1.6
 var team = 0

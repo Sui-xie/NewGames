@@ -1,9 +1,9 @@
 extends Node2D
 class_name Boot
 
-const bus = preload("res://scripts/ctx/lib/eventBus.gd")
+const bus = preload("res://core/eventBus.gd")
 
-@export var firstOneScene:PackedScene = preload("res://scene/menu/menu.tscn");
+@export var firstOneScene:PackedScene = preload("res://game/menu/menu.tscn");
 
 # 该脚本中，不应该使用ctx的任何服务，还未加载
 func _ready() -> void:

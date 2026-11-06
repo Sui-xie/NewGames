@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://88wsrkbfkyis"]
 
-[ext_resource type="Script" uid="uid://bcdqv1nsx2e44" path="res://scripts/ctx/boot.gd" id="1_pq8q7"]
-[ext_resource type="PackedScene" uid="uid://3kneopj3iugv" path="res://scene/game/level.tscn" id="2_pyidc"]
+[ext_resource type="Script" uid="uid://bcdqv1nsx2e44" path="res://core/boot.gd" id="1_pq8q7"]
+[ext_resource type="PackedScene" uid="uid://3kneopj3iugv" path="res://game/level/level.tscn" id="2_pyidc"]
 
 [node name="Node2D" type="Node2D" unique_id=1239942775]
 script = ExtResource("1_pq8q7")

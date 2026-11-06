@@ -1,5 +1,5 @@
-﻿extends Node
-var bailu: PackedScene =  preload('res://scene/other/Bailu.tscn')
+extends Node
+var bailu: PackedScene =  preload('res://game/level/scene/Bailu.tscn')
 var waveInterval:float = 60
 var nextWaveTime:float = 10
 var t
