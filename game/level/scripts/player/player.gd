@@ -17,10 +17,6 @@ var collingTime = 0.3
 var hp:float = 1000
 var maxHp:float = 1000
 var team:int = 1
-var id;
-var deadCallback:Callable;
-var client:bool = false;
-var state:String = 'init'
 
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_axis("move_left", "move_right")
@@ -29,7 +25,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(delta: float) -> void:
-	nameLabel.text = "玩家ID:{id}".format({"id":id})
+	nameLabel.text = "单人玩家"
 	healthBar.value = (hp / maxHp) * 100
 	if cooling != 0:
 		cooling -= delta
@@ -48,18 +44,8 @@ func _input(e):
 			change_zoom(-zoomSpeed)
 	
 func _ready() -> void:
-	print("[INFO]Player:",id," Ready")
-	if(id == null):
-		print("[ERROR]Player id is Null")
-		queue_free()
-		return
 	cam = get_node('Camera2D')
-	if(client):
-		cam.make_current()
-		cam.zoom = zoom
-	else:
-		cam.queue_free()
-	state = 'readay'
+	cam.zoom = zoom
 
 
 func shoot():
@@ -75,7 +61,6 @@ func shoot():
 	cooling = collingTime
 
 func change_zoom(z):
-	if not(client):return#不在客户端运行直接不管这个
 	var new: Vector2 = zoom + Vector2(z,z)
 	if new > maxZoom:new = maxZoom
 	if new < minZoom:new = minZoom
@@ -88,8 +73,6 @@ func changeHp(health):
 		dead()
 
 func dead() -> void:
-	if(deadCallback.is_valid()):
-		deadCallback.call(id)
 	queue_free()
 
 func jump():

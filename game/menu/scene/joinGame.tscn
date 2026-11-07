@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://dseo3tjd0r23e"]
+
+[ext_resource type="Script" uid="uid://do8jgxk8qw0io" path="res://game/menu/scripts/lib/join.gd" id="1_rsovy"]
+
+[node name="Container" type="Control" unique_id=1196520902 node_paths=PackedStringArray("confirm", "back", "portInput", "ipInput")]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = -46.0
+offset_right = 116.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rsovy")
+confirm = NodePath("Control/确定")
+back = NodePath("Control/返回")
+portInput = NodePath("portInput")
+ipInput = NodePath("IPInput")
+
+[node name="Label3" type="Label" parent="." unique_id=1168715239]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = -76.0
+offset_right = 182.0
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "输入IP地址"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="." unique_id=1759627462]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.0
+offset_top = 14.0
+offset_right = 116.0
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="确定" type="Button" parent="Control" unique_id=1395254972]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.5
+offset_top = -21.0
+offset_right = -11.5
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "确定"
+
+[node name="返回" type="Button" parent="Control" unique_id=1108937845]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 10.5
+offset_top = -20.0
+offset_right = 74.5
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "返回"
+
+[node name="Label" type="Label" parent="." unique_id=1930759221]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -39.0
+offset_right = -80.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "地址:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=1853699665]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -119.0
+offset_top = -5.0
+offset_right = -79.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "端口:"
+
+[node name="portInput" type="LineEdit" parent="." unique_id=603531678]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_top = -8.0
+offset_right = 108.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="IPInput" type="LineEdit" parent="." unique_id=656339167]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_top = -40.0
+offset_right = 107.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,3 +1,12 @@
 [gd_scene format=3 uid="uid://dijo7cry2ayu8"]
 
-[node name="Menu" type="Node2D" unique_id=995647625]
+[ext_resource type="Script" uid="uid://cv8uqf0wdf3nl" path="res://game/menu/scripts/menu.gd" id="1_4o8gj"]
+[ext_resource type="PackedScene" uid="uid://bo1msvardjjij" path="res://game/menu/scene/selectMode.tscn" id="2_rflyd"]
+[ext_resource type="PackedScene" uid="uid://dseo3tjd0r23e" path="res://game/menu/scene/joinGame.tscn" id="3_xp5oh"]
+[ext_resource type="PackedScene" uid="uid://cjnqc2hgsc466" path="res://game/menu/scene/createGame.tscn" id="4_4cfgu"]
+
+[node name="Menu" type="CanvasLayer" unique_id=611790858]
+script = ExtResource("1_4o8gj")
+selectMode = ExtResource("2_rflyd")
+joinGame = ExtResource("3_xp5oh")
+createGame = ExtResource("4_4cfgu")

@@ -13,8 +13,8 @@ const sceneList: Dictionary[String, Variant] = {
 var players := []
 var globalService:Dictionary[String,Node] = {}#全局服务
 var service:Dictionary[String,Node] = {}#普通服务
-var boot:Node2D
-var currentScene:Node2D
+var boot:Node
+var currentScene:Node
 var tags:Tags
 
 const bus = preload("res://core/eventBus.gd")
@@ -52,11 +52,11 @@ func getService(serviceName:String) -> Node:
 	else:
 		return null
 		
-func getBoot()->Node2D:
+func getBoot()->Node:
 	if boot == null:print('[WARN]有节点拿到了空的Boot节点')
 	return boot
 		
-func getMainScene() -> Node2D:
+func getMainScene() -> Node:
 	if currentScene == null:print('[WARN]有节点拿到了空的主场景节点')
 	return currentScene
 
@@ -67,20 +67,23 @@ func checkTag(node:Variant,tag:String) ->bool:
 	return false
 
 #该方法在boot时禁用,在该方法内禁止使用事件总线
-func switchMainScene(sceneId:String):
+func switchMainScene(sceneId:String,parms = {}):
 	var sceneName:String;
 	if sceneId in sceneList:
 		sceneName = sceneId
 	else:
 		sceneName = "error"
 	for serviceName in service:
-			service[serviceName].free()
+			service[serviceName].queue_free()
 	service = {}
-	currentScene.free()
+	currentScene.queue_free()
 	
 	var s = load(sceneList[sceneName]).instantiate()
 	currentScene = s
 	var eventBus: EventBus = bus.new()
 	registerService('eventBus',eventBus)
 	s.add_child(eventBus)
+	if "parms" in s:
+		s.parms = parms
+	parms = {}
 	boot.add_child(s)

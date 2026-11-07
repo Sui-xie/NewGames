@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 class_name Boot
 
 const bus = preload("res://core/eventBus.gd")

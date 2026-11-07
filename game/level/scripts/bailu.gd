@@ -15,8 +15,7 @@ func _ready() -> void:
 	print(self.name)
 
 func getPlayer():
-	var players:PlayerMgr =	ctx.getService('playerMgr')
-	player = players.getPlayer(0)
+	player = ctx.getMainScene().getPlayer()
 
 func _process(delta: float) -> void:
 	ai(delta)
