@@ -17,6 +17,7 @@ var collingTime = 0.3
 var hp:float = 1000
 var maxHp:float = 1000
 var team:int = 1
+var id = 1;
 
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_axis("move_left", "move_right")
@@ -25,7 +26,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(delta: float) -> void:
-	nameLabel.text = "单人玩家"
+	nameLabel.text = "主机"
 	healthBar.value = (hp / maxHp) * 100
 	if cooling != 0:
 		cooling -= delta

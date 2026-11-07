@@ -1,3 +1,37 @@
 [gd_scene format=3 uid="uid://88wsrkbfkyis"]
 
+[ext_resource type="PackedScene" uid="uid://cwt6hsixt368g" path="res://test/test.tscn" id="1_pq8q7"]
+[ext_resource type="Script" uid="uid://ci5hahg3a4lc" path="res://test/test.gd" id="2_pyidc"]
+[ext_resource type="PackedScene" uid="uid://cb6qsocmul0k5" path="res://test/player.tscn" id="3_vvh5c"]
+[ext_resource type="Texture2D" uid="uid://b88ku4l27sbvo" path="res://assets/IMG/红方块.png" id="4_28aoi"]
+[ext_resource type="Script" uid="uid://cujnwkaibokiv" path="res://test/TESTGROUND.gd" id="5_jnlp7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cypby"]
+size = Vector2(2892, 155)
+
 [node name="Node2D" type="Node" unique_id=1006730559]
+
+[node name="Test" parent="." unique_id=568238772 node_paths=PackedStringArray("Players") instance=ExtResource("1_pq8q7")]
+script = ExtResource("2_pyidc")
+player = ExtResource("3_vvh5c")
+Players = NodePath("Players")
+
+[node name="Players" type="Node" parent="Test" unique_id=1746069554]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="Test" unique_id=1373662842]
+_spawnable_scenes = PackedStringArray("uid://cb6qsocmul0k5")
+spawn_path = NodePath("../Players")
+
+[node name="RigidBody2D" type="StaticBody2D" parent="." unique_id=1578474239]
+collision_layer = 129
+collision_mask = 129
+script = ExtResource("5_jnlp7")
+
+[node name="红方块" type="Sprite2D" parent="RigidBody2D" unique_id=1073200229]
+position = Vector2(9, 94)
+scale = Vector2(28.86, 1.6)
+texture = ExtResource("4_28aoi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=807882437]
+position = Vector2(2, 88)
+shape = SubResource("RectangleShape2D_cypby")
