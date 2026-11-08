@@ -1,15 +1,68 @@
 extends Node
 
-const player = preload("res://game/level/scene/player.tscn")
 const uiLayer: PackedScene = preload('res://game/level/scene/ui/uiLayer.tscn')
 const mapMgrScripts = preload('res://game/level/map/mapMgr.gd')
+const playersMgr = preload("res://game/level/scripts/player/playerMgr.gd")
 
-const attack = preload('res://game/level/scripts/attack.gd')
 var parms:Dictionary = {}
-var players: Array[Variant] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if parms.is_empty():
+		createGame()
+		ctx.onlineStatus = "offline"
+		return
+	if(parms['type'] == 'joinGame'):
+		joinGame()
+		ctx.onlineStatus = "online"
+		return
+	if(parms['type'] == 'createGame'):
+		createGame()
+		ctx.onlineStatus = "online"
+		return
+	if(parms['type'] == 'play'):	
+		createGame()
+		ctx.onlineStatus = "offline"
+		return
+	print("[ERROR]启动失败，启动参数未知,参数为:",parms)
+	
+func createGame() -> int:
+	initGameScene()
+	if parms.is_empty() or parms.get("type") == "play":
+		# 单机
+		multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
+		ctx.getService('playerMgr').playerJoin(multiplayer.get_unique_id())
+	else:
+		var net := ENetMultiplayerPeer.new()
+		var err := net.create_server(parms['port'], parms['maxPlayer'])
+		if err != OK:
+			push_error("create_server failed: %d" % err)
+			ctx.switchMainScene('menu')
+			ctx.onlineStatus = 'offline'
+			return err
+		multiplayer.multiplayer_peer = net
+		var mgr:PlayerMgr = ctx.getService('playerMgr')
+		multiplayer.peer_connected.connect(mgr.playerJoin)
+		multiplayer.peer_disconnected.connect(mgr.playerLeave)
+		ctx.getService('playerMgr').playerJoin(multiplayer.get_unique_id())
+	return OK
+	
+func joinGame():
+	var peer
+	var ip = parms['ip']
+	var port = parms['port']
+	var net:ENetMultiplayerPeer = ENetMultiplayerPeer.new()
+	peer = net.create_client(ip,port)
+	if peer == OK:
+		multiplayer.multiplayer_peer = net
+		initGameScene()
+	else:
+		ctx.onlineStatus = 'offline'
+		ctx.switchMainScene('menu')
+		ctx.broadCast("[ERROR]连接失败，错误码:",peer)
+
+
+func initGameScene():
 	var ui = uiLayer.instantiate()
 	ctx.registerService('ui',ui)
 	add_child(ui)
@@ -18,16 +71,6 @@ func _ready() -> void:
 	ctx.registerService('mapMgr',mapMgr)
 	add_child(mapMgr)
 	
-	#此处添加玩家
-	players.append(player.instantiate())
-	add_child(players[0])
-	add_child(attack.new())
-
-func getPlayer():
-	return players[0]
-	
-func newPlayer():
-	pass
-
-func removePlayer():
-	pass
+	var playerMgr = playersMgr.new()
+	ctx.registerService('playerMgr',playerMgr)
+	add_child(playerMgr)

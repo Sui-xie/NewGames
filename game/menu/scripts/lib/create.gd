@@ -14,4 +14,4 @@ func  backMenu():
 	menu.switchTo('select')
 	
 func create():
-	menu.joinRoom(portInput.text,playerNumberInput.text)
+	menu.createRoom(portInput.text,playerNumberInput.text)

@@ -2,7 +2,8 @@ extends Node
 class_name Ctx
 
 @export var gravity: float = -1600
-
+var uuid: float = randf()
+var onlineStatus = "offline"
 
 const sceneList: Dictionary[String, Variant] = {
 	"error":"res://game/error/errorScene.tscn",
@@ -16,6 +17,7 @@ var service:Dictionary[String,Node] = {}#普通服务
 var boot:Node
 var currentScene:Node
 var tags:Tags
+var clientId = -1;# -1表示还未设置
 
 const bus = preload("res://core/eventBus.gd")
 const tagsScripts = preload('res://core/interFace/tags.gd')
@@ -65,6 +67,14 @@ func checkTag(node:Variant,tag:String) ->bool:
 		if tag in node:
 			return true
 	return false
+
+@rpc("any_peer","call_local","reliable")
+func broadCast(...MSG_ARGS):
+	var msg = ''
+	if MSG_ARGS.size() == 0:return
+	for m in MSG_ARGS:
+		msg += str(m)
+	print("[BroadCast]",msg)
 
 #该方法在boot时禁用,在该方法内禁止使用事件总线
 func switchMainScene(sceneId:String,parms = {}):

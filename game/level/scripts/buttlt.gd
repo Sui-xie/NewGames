@@ -5,7 +5,7 @@ var t = 0;
 var speed = 3000;
 var rot:float = 0;
 var shooter;
-var damage;
+var diedCallBack:Callable
 
 
 # Called when the node enters the scene tree for the first time.
@@ -35,10 +35,9 @@ func body_enter(b:Node) -> void:
 	if not('team' in b):return
 	if not('team' in shooter):return
 	if b.team == shooter.team:return
-	if b.has_method('changeHp'):
-		b.changeHp(damage)
-	else:
-		print("[WARN]Not found Method: changeHp,Node Name is:",b.name)
-		return
+	
+	if diedCallBack.is_valid():
+		diedCallBack.rpc(b.id)
+	
 	queue_free()
 	return

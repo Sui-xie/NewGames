@@ -128,6 +128,7 @@ offset_right = 108.0
 offset_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
+text = "3818"
 
 [node name="IPInput" type="LineEdit" parent="." unique_id=656339167]
 layout_mode = 1
@@ -142,3 +143,4 @@ offset_right = 107.0
 offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 2
+text = "127.0.0.1"

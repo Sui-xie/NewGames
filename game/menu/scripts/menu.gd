@@ -39,8 +39,8 @@ func switchTo(sceneName):
 func createRoom(port,playerNumber):
 	var parms: Dictionary[Variant, Variant] = {
 		"type":"createGame",
-		"maxPlayer":playerNumber,
-		"port":port
+		"maxPlayer":int(playerNumber),
+		"port":int(port)
 	}
 	print("[DEBUG]PORT:",port,"NUMBER:",playerNumber)
 	ctx.switchMainScene('level',parms)
@@ -49,7 +49,7 @@ func joinRoom(ip,port):
 	var parms: Dictionary[Variant, Variant] = {
 		"type":"joinGame",
 		"ip":ip,
-		"port":port
+		"port":int(port)
 	}
 	print("[DEBUG]IP:",ip,"PORT:",port)
 	ctx.switchMainScene('level',parms)
