@@ -5,13 +5,13 @@
 [ext_resource type="Script" uid="uid://q4g0tlhps4kw" path="res://game/level/scripts/player/jumpCheck.gd" id="3_fvtld"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pyidc"]
-size = Vector2(100, 100)
+size = Vector2(85, 85)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xa3wl"]
 size = Vector2(98, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cypby"]
-size = Vector2(171, 100)
+size = Vector2(165.5, 86)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1862613727 node_paths=PackedStringArray("nameLabel", "jumpCheckArea", "mountPoint", "pickedCheckArea")]
 position = Vector2(1, 0)
@@ -25,7 +25,7 @@ metadata/_edit_horizontal_guides_ = [95.0, 100.0]
 metadata/_edit_vertical_guides_ = [95.0, 100.0]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1452549003]
-position = Vector2(3.8146973e-06, 0)
+position = Vector2(-0.4999981, 6.5)
 shape = SubResource("RectangleShape2D_pyidc")
 
 [node name="Label" type="Label" parent="." unique_id=191140649]
@@ -39,7 +39,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="哈！" type="Sprite2D" parent="." unique_id=1147042313]
-scale = Vector2(0.07974482, 0.07974482)
+position = Vector2(0, 7)
+scale = Vector2(0.06858054, 0.06858055)
 texture = ExtResource("2_hjaqi")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1516253399]
@@ -52,11 +53,12 @@ position = Vector2(0, 52)
 shape = SubResource("RectangleShape2D_xa3wl")
 
 [node name="mountPoint" type="Node2D" parent="." unique_id=456590666]
+position = Vector2(-46, 6)
 
 [node name="Area2D2" type="Area2D" parent="." unique_id=164375437]
 collision_layer = 16
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=1189309341]
-position = Vector2(-2, 0)
+position = Vector2(0.75, 7)
 shape = SubResource("RectangleShape2D_cypby")

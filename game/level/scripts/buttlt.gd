@@ -1,4 +1,4 @@
-class_name Buttlt;
+class_name Buttlt1;
 extends Area2D
 
 var t = 0;

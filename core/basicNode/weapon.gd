@@ -8,3 +8,6 @@ func shoot(targetPosition,shooterPosition):
 @rpc("any_peer","call_local","reliable")
 func reload():	
 	print("[WARN]未被重写的Reload方法")
+	
+func active():
+	print("[WARN]未被重写的Active方法")

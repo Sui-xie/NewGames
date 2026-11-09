@@ -3,6 +3,7 @@ extends Node
 const uiLayer: PackedScene = preload('res://game/level/scene/ui/uiLayer.tscn')
 const mapMgrScripts = preload('res://game/level/map/mapMgr.gd')
 const playersMgr = preload("res://game/level/scripts/player/playerMgr.gd")
+const testWeapon = preload("res://game/level/scene/weapon/steelPipeGun.tscn")
 
 var parms:Dictionary = {}
 
@@ -75,6 +76,9 @@ func initGameScene():
 	var playerMgr = playersMgr.new()
 	ctx.registerService('playerMgr',playerMgr)
 	add_child(playerMgr)
+	
+	var we = testWeapon.instantiate()
+	add_child(we)
 	
 func _exit_tree() -> void:
 	if multiplayer.is_server():

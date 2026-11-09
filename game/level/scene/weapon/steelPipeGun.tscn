@@ -1,12 +1,18 @@
 [gd_scene format=3 uid="uid://bmpt1xqllpg2m"]
 
 [ext_resource type="Script" uid="uid://3oxahgq03tab" path="res://game/level/scripts/weapon/steelPipeGun.gd" id="1_vkmsf"]
+[ext_resource type="PackedScene" uid="uid://dyqspxtuxmltd" path="res://game/level/scene/weapon/bullet/steelPipe.tscn" id="2_iblqf"]
 [ext_resource type="Texture2D" uid="uid://b52iw7i5r1daj" path="res://assets/IMG/avator.png" id="2_x6uk6"]
 
-[node name="SteelPipeGun" type="Node2D" unique_id=918577544 node_paths=PackedStringArray("shootPoint")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cypby"]
+size = Vector2(200, 40)
+
+[node name="SteelPipeGun" type="RigidBody2D" unique_id=1827280107 node_paths=PackedStringArray("shootPoint")]
+collision_layer = 16
+collision_mask = 128
 script = ExtResource("1_vkmsf")
 shootPoint = NodePath("shooterPoint")
-bullet = null
+bullet = ExtResource("2_iblqf")
 
 [node name="Avator" type="Sprite2D" parent="." unique_id=1024291141]
 position = Vector2(-1, 0)
@@ -14,4 +20,6 @@ scale = Vector2(1, 0.1497462)
 texture = ExtResource("2_x6uk6")
 
 [node name="shooterPoint" type="Node2D" parent="." unique_id=162342673]
-position = Vector2(95, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1183733727]
+shape = SubResource("RectangleShape2D_cypby")
