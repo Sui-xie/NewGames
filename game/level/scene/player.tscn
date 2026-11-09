@@ -10,12 +10,17 @@ size = Vector2(100, 100)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xa3wl"]
 size = Vector2(98, 2)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1862613727 node_paths=PackedStringArray("nameLabel", "jumpCheckArea", "sync")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cypby"]
+size = Vector2(171, 100)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1862613727 node_paths=PackedStringArray("nameLabel", "jumpCheckArea", "mountPoint", "pickedCheckArea")]
+position = Vector2(1, 0)
 collision_layer = 2
 script = ExtResource("1_hjaqi")
 nameLabel = NodePath("Label")
 jumpCheckArea = NodePath("Area2D")
-sync = NodePath("")
+mountPoint = NodePath("mountPoint")
+pickedCheckArea = NodePath("Area2D2")
 metadata/_edit_horizontal_guides_ = [95.0, 100.0]
 metadata/_edit_vertical_guides_ = [95.0, 100.0]
 
@@ -45,3 +50,13 @@ script = ExtResource("3_fvtld")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=762515444]
 position = Vector2(0, 52)
 shape = SubResource("RectangleShape2D_xa3wl")
+
+[node name="mountPoint" type="Node2D" parent="." unique_id=456590666]
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=164375437]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=1189309341]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_cypby")

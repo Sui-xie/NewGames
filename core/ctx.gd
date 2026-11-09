@@ -18,6 +18,7 @@ var boot:Node
 var currentScene:Node
 var tags:Tags
 var clientId = -1;# -1表示还未设置
+var isServer:bool = false;
 
 const bus = preload("res://core/eventBus.gd")
 const tagsScripts = preload('res://core/interFace/tags.gd')

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dltx23fjdc1eg"]
+
+[ext_resource type="Texture2D" uid="uid://b88ku4l27sbvo" path="res://assets/IMG/红方块.png" id="1_kstgm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cypby"]
+size = Vector2(200, 200)
+
+[node name="ABox" type="RigidBody2D" unique_id=1434022185]
+collision_layer = 144
+collision_mask = 144
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=687426795]
+shape = SubResource("RectangleShape2D_cypby")
+
+[node name="红方块" type="Sprite2D" parent="." unique_id=507320911]
+position = Vector2(-3.8146973e-06, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("1_kstgm")

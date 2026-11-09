@@ -4,15 +4,6 @@ class_name PlayerMgr
 const player = preload("res://game/level/scene/player.tscn")
 var players:Dictionary[int,Player] = {}
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 @rpc("any_peer","call_remote","reliable")
 func addPlayer(id):
 	var p:Player = player.instantiate()

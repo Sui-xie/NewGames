@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dyqspxtuxmltd"]
+
+[ext_resource type="Script" uid="uid://caijq2h5n1n5o" path="res://game/level/scripts/buttlt.gd" id="1_ve4q1"]
+[ext_resource type="Texture2D" uid="uid://ctwbi4cxp6d2w" path="res://assets/IMG/钢管.png" id="2_ca50c"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cypby"]
+radius = 4.966036
+height = 138.87358
+
+[node name="steelPipe" type="Area2D" unique_id=500824647]
+collision_mask = 7
+script = ExtResource("1_ve4q1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1783842298]
+position = Vector2(-2.0270004, 3.8146973e-06)
+rotation = -1.5609388
+shape = SubResource("CapsuleShape2D_cypby")
+
+[node name="钢管" type="Sprite2D" parent="." unique_id=1811979406]
+position = Vector2(-0.027000427, 8.000004)
+rotation = 0.43613893
+scale = Vector2(0.03800677, 0.03800676)
+texture = ExtResource("2_ca50c")

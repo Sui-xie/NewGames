@@ -4,7 +4,9 @@ class_name Player
 @export var speed: float = 200
 @export var nameLabel:Label
 @export var jumpCheckArea:JumpCheck
+@export var mountPoint:Node2D
 @export var targetPostion:Vector2 = Vector2(0,0)
+@export var pickedCheckArea:Area2D
 
 var jumpForce:float = -1000
 var cam:Camera2D
@@ -19,7 +21,7 @@ var team:int = 1
 var id: int = 0;
 var uuid: int = 0xffffff00;
 var nickName:String = "玩家";
-
+var meta = [ctx.tags.player]
 
 func _enter_tree() -> void:
 	if id != 0:
@@ -32,6 +34,7 @@ func isClient():
 
 func _physics_process(delta: float) -> void:
 	if not isClient():return
+	setTargetPosition.rpc(position)
 	var direction = Input.get_axis("move_left", "move_right")
 	velocity.x = direction * speed
 	velocity.y -= ctx.gravity*delta
@@ -39,7 +42,6 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	if isClient():
-		setTargetPosition.rpc(position)
 		nameLabel.text = nickName + ":%d" % id
 		if cooling != 0:
 			cooling -= delta
@@ -57,6 +59,15 @@ func _input(e):
 		if(e.keycode == KEY_SPACE):
 			if e.pressed:
 				jump()
+		if(e.keycode == KEY_F):
+			if e.pressed:
+				if mountPoint.get_child_count() == 0:
+					var n = queryCanPickedItem()
+					if n == null:return
+					pickedItem.rpc(n)
+				else:
+					thorwItem.rpc(velocity.angle(),false,velocity)
+					
 	if e is InputEventMouseButton:
 		if e.button_index == MOUSE_BUTTON_WHEEL_UP:
 			change_zoom(zoomSpeed)
@@ -92,12 +103,48 @@ func change_zoom(z):
 	zoom = new
 	cam.zoom = new
 
+func queryCanPickedItem()->Item:
+	var items = pickedCheckArea.get_overlapping_bodies()
+	if items.is_empty():return null
+	var current:Item
+	for x in items:
+		if not (x is Item):continue
+		if ctx.tags.canPicked in x.meta:
+			if current == null:
+				current = x;
+				continue
+			if abs(self.position.x - x.position.x) < abs(self.position.x - current.position.x):
+				current = x
+	return current
+	
+
 func jump():
 	if jumpCheckArea.jumpCheck():
 		velocity.y = 0
 		velocity.y += jumpForce
 		jumpCheckArea.aJump()
 
-@rpc("any_peer","call_remote","unreliable")
+
+
+@rpc("any_peer","call_remote","unreliable_ordered")
 func setTargetPosition(vector:Vector2):
 	targetPostion = vector
+
+@rpc("authority","call_local","reliable")
+func pickedItem(node:Item):
+	if ctx.tags.canPicked in node.meta:
+		node.freeze = true
+		node.reparent(mountPoint,false)
+
+#face值应该是一个弧度，表达丢出时角色的朝向
+@rpc("authority","call_local","reliable")
+func thorwItem(face:float,down:bool,velocity1:Vector2):
+	var node = mountPoint.get_child(0)
+	if node == null:return
+	node.reparent(ctx.currentScene)
+	if not down:
+		node.freeze = false
+		var s := velocity1
+		s += Vector2.from_angle(face) * 50
+		node.linear_velocity = s
+		

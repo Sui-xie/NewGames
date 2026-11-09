@@ -45,6 +45,7 @@ func createGame() -> int:
 		multiplayer.peer_connected.connect(mgr.playerJoin)
 		multiplayer.peer_disconnected.connect(mgr.playerLeave)
 		ctx.getService('playerMgr').playerJoin(multiplayer.get_unique_id())
+		ctx.isServer = true
 	return OK
 	
 func joinGame():
@@ -74,3 +75,10 @@ func initGameScene():
 	var playerMgr = playersMgr.new()
 	ctx.registerService('playerMgr',playerMgr)
 	add_child(playerMgr)
+	
+func _exit_tree() -> void:
+	if multiplayer.is_server():
+		multiplayer.multiplayer_peer.close()
+		multiplayer.multiplayer_peer = null
+		ctx.isServer = false
+		
