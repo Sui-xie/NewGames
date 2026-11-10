@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dyqspxtuxmltd"]
 
-[ext_resource type="Script" uid="uid://caijq2h5n1n5o" path="res://game/level/scripts/buttlt.gd" id="1_ve4q1"]
+[ext_resource type="Script" uid="uid://ioskgy8tgomk" path="res://game/level/scripts/weapon/bullet/steelPipe.gd" id="1_ve4q1"]
 [ext_resource type="Texture2D" uid="uid://ctwbi4cxp6d2w" path="res://assets/IMG/钢管.png" id="2_ca50c"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cypby"]

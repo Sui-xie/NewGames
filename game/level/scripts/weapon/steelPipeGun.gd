@@ -24,7 +24,7 @@ func active():
 #显式输入位置防止延迟偏移
 @rpc("any_peer","call_local","reliable")
 func shoot(mousePosition:Vector2,shooterPosition:Vector2):
-	var b = bullet.instantiate()
+	var b:SteelPipe = bullet.instantiate()
 	b.shooter = self
 	var r := (mousePosition - shooterPosition).angle()
 	b.rotation = r 

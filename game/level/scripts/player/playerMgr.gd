@@ -17,7 +17,7 @@ func removePlayer(id):
 	if not players.has(id) or players[id] == null:
 		return
 	players[id].queue_free()
-	players[id] = null
+	players.erase(id)
 	
 func playerJoin(peer):
 	if ctx.onlineStatus == "offline":
@@ -29,8 +29,10 @@ func playerJoin(peer):
 		addPlayer.rpc_id(peer,p.id)
 	addPlayer.rpc(peer)
 	addPlayer(peer)
+	ctx.emit("playerJoin",peer)
 
 func playerLeave(peer):
 	ctx.broadCast.rpc("玩家:",peer,"离开了游戏")
+	ctx.emit("playerLeave",peer)
 	removePlayer(peer)
 	removePlayer.rpc(peer)

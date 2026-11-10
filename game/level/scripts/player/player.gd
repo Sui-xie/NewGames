@@ -68,7 +68,7 @@ func _input(e):
 				if mountPoint.get_child_count() == 0:
 					var n = queryCanPickedItem()
 					if n == null:return
-					pickedItem.rpc(n)
+					pickedItem.rpc(n.get_path())
 				else:
 					thorwItem.rpc(velocity.angle(),false,velocity)
 					
@@ -127,10 +127,12 @@ func sync(targetPos:Vector2,mousePos:Vector2):
 	mousePosition = mousePos
 
 @rpc("authority","call_local","reliable")
-func pickedItem(node:Item):
+func pickedItem(nodePath:String):
+	var node:Item = get_node(nodePath)
 	if ctx.tags.canPicked in node.meta:
 		node.freeze = true
 		node.global_position = mountPoint.global_position
+		node.rotation = mountPoint.rotation
 		node.reparent(mountPoint)
 
 #face值应该是一个弧度，表达丢出时角色的朝向
@@ -138,7 +140,7 @@ func pickedItem(node:Item):
 func thorwItem(face:float,down:bool,velocity1:Vector2):
 	var node = mountPoint.get_child(0)
 	if node == null:
-		print("我是玩家:",ctx.clientId,"无法找到挂载点！")
+		print("我是玩家:",ctx.clientId,"，无法找到挂载点！")
 	if node == null:return
 	node.reparent(ctx.currentScene)
 	if not down:

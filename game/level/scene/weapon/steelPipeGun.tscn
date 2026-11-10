@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://3oxahgq03tab" path="res://game/level/scripts/weapon/steelPipeGun.gd" id="1_vkmsf"]
 [ext_resource type="PackedScene" uid="uid://dyqspxtuxmltd" path="res://game/level/scene/weapon/bullet/steelPipe.tscn" id="2_iblqf"]
 [ext_resource type="Texture2D" uid="uid://b52iw7i5r1daj" path="res://assets/IMG/avator.png" id="2_x6uk6"]
+[ext_resource type="Script" uid="uid://bvqxuktjwn86b" path="res://game/level/scripts/lib/autoFlip.gd" id="4_iblqf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cypby"]
 size = Vector2(200, 40)
@@ -18,6 +19,7 @@ bullet = ExtResource("2_iblqf")
 position = Vector2(-1, 0)
 scale = Vector2(1, 0.1497462)
 texture = ExtResource("2_x6uk6")
+script = ExtResource("4_iblqf")
 
 [node name="shooterPoint" type="Node2D" parent="." unique_id=162342673]
 

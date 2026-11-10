@@ -3,7 +3,7 @@ extends Node
 const uiLayer: PackedScene = preload('res://game/level/scene/ui/uiLayer.tscn')
 const mapMgrScripts = preload('res://game/level/map/mapMgr.gd')
 const playersMgr = preload("res://game/level/scripts/player/playerMgr.gd")
-const testWeapon = preload("res://game/level/scene/weapon/steelPipeGun.tscn")
+const itemMgr1 = preload("res://game/level/scripts/itemMgr.gd")
 
 var parms:Dictionary = {}
 
@@ -33,6 +33,8 @@ func createGame() -> int:
 		# 单机
 		multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
 		ctx.getService('playerMgr').playerJoin(multiplayer.get_unique_id())
+		var a:ItemMgr = ctx.getService('itemMgr')
+		a.addItem("steelPipeGun")
 	else:
 		var net := ENetMultiplayerPeer.new()
 		var err := net.create_server(parms['port'], parms['maxPlayer'])
@@ -47,6 +49,9 @@ func createGame() -> int:
 		multiplayer.peer_disconnected.connect(mgr.playerLeave)
 		ctx.getService('playerMgr').playerJoin(multiplayer.get_unique_id())
 		ctx.isServer = true
+		var a:ItemMgr = ctx.getService('itemMgr')
+		a.addItem("steelPipeGun")
+		
 	return OK
 	
 func joinGame():
@@ -77,8 +82,12 @@ func initGameScene():
 	ctx.registerService('playerMgr',playerMgr)
 	add_child(playerMgr)
 	
-	var we = testWeapon.instantiate()
-	add_child(we)
+	var itemMgr:ItemMgr = itemMgr1.new()
+	ctx.registerService('itemMgr',itemMgr)
+	add_child(itemMgr)
+	
+	var steelPipeGun = load("res://game/level/scene/weapon/steelPipeGun.tscn")
+	itemMgr.regNewItem("steelPipeGun",steelPipeGun)
 	
 func _exit_tree() -> void:
 	if multiplayer.is_server():
