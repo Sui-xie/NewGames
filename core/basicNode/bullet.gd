@@ -13,5 +13,5 @@ func _process(delta: float) -> void:
 	pass
 
 @rpc("any_peer","call_local","reliable")
-func hit(target):
+func hit(target:String):
 	print("[WARN]未被重写的hit方法")

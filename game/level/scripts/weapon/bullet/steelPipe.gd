@@ -37,10 +37,11 @@ func body_enter(target:Node) -> void:
 	if not('team' in target):return
 	if not('team' in shooter):return
 	if target.team == shooter.team:return
-	hit.rpc(target)
+	hit.rpc(target.get_path())
 	return
 
 @rpc("any_peer","call_local","reliable")
-func hit(target:Player):
+func hit(targetPath:String):
+	var target = get_node(targetPath)
 	print("[DEBUG]子弹命中了！:",target.name)
 	queue_free()

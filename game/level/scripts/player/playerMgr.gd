@@ -14,6 +14,7 @@ func addPlayer(id):
 
 @rpc("any_peer","call_remote","reliable")
 func removePlayer(id):
+	players[id].dropItem()
 	if not players.has(id) or players[id] == null:
 		return
 	players[id].queue_free()

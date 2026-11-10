@@ -142,10 +142,16 @@ func thorwItem(face:float,down:bool,velocity1:Vector2):
 	if node == null:
 		print("我是玩家:",ctx.clientId,"，无法找到挂载点！")
 	if node == null:return
-	node.reparent(ctx.currentScene)
+	node.reparent(ctx.getService("itemMgr"))
 	if not down:
 		node.freeze = false
 		var s := velocity1
 		s += Vector2.from_angle(face) * 50
 		node.linear_velocity = s
-		
+
+@rpc("any_peer","call_local","reliable")
+func dropItem():
+	if mountPoint.get_child_count() == 0:return
+	var target:Item =mountPoint.get_child(0)
+	target.freeze = false
+	target.reparent(ctx.getService("itemMgr"))
