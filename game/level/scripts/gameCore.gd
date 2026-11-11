@@ -91,6 +91,10 @@ func initGameScene():
 	ctx.registerService('ui',ui)
 	add_child(ui)
 	
+	var itemMgr:ItemMgr = itemMgr1.new()
+	ctx.registerService('itemMgr',itemMgr)
+	add_child(itemMgr)
+	
 	var mapMgr:MapMgr = mapMgrScripts.new()
 	ctx.registerService('mapMgr',mapMgr)
 	add_child(mapMgr)
@@ -98,11 +102,7 @@ func initGameScene():
 	var playerMgr = playersMgr.new()
 	ctx.registerService('playerMgr',playerMgr)
 	add_child(playerMgr)
-	
-	var itemMgr:ItemMgr = itemMgr1.new()
-	ctx.registerService('itemMgr',itemMgr)
-	add_child(itemMgr)
-	
+
 	var steelPipeGun = load("res://game/level/scene/weapon/steelPipeGun.tscn")
 	itemMgr.regNewItem("steelPipeGun",steelPipeGun)
 	

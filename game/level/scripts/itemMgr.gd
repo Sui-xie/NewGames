@@ -19,7 +19,7 @@ func clearItem():
 
 #通过物品名和命名空间查找一个物品
 @rpc("any_peer","call_local","reliable")
-func addItem(name1:String,parms = [],nameSpace:String="vanilla"):
+func addItem(name1:String,parms = {},nameSpace:String="vanilla",x:int = 0,y:int = 0):
 	var itemName:String = nameSpace + (':' + name1)
 	if itemName in itemTable:
 		var item:PackedScene = itemTable[itemName]
@@ -30,13 +30,14 @@ func addItem(name1:String,parms = [],nameSpace:String="vanilla"):
 		i._private_nameScpace = nameSpace
 		i._private_name = name1
 		i.parms = parms
+		i.position = Vector2(x,y)
 		add_child(i)
 		items[id] = i
 		return id
 	else:
 		print("[ERROR]找不到名为: ",itemName," 的物品")
 		return -1
-	
+
 #移除一个已经添加的物品
 @rpc("any_peer","call_local","reliable")
 func removeItem(id):
