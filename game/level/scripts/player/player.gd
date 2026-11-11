@@ -7,6 +7,7 @@ class_name Player
 @export var mountPoint:Node2D
 @export var targetPostion:Vector2 = Vector2(0,0)
 @export var pickedCheckArea:Area2D
+@export var img:Sprite2D
 
 var jumpForce:float = -1000
 var cam:Camera2D
@@ -41,6 +42,10 @@ func _physics_process(delta: float) -> void:
 
 func _process(_delta: float) -> void:
 	nameLabel.text = nickName + ":%d" % id
+	if abs(rad_to_deg(Vector2(global_position - get_global_mouse_position()).angle())) > 90:
+		img.flip_h = true
+	else:
+		img.flip_h = false
 	if isClient():
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			use()

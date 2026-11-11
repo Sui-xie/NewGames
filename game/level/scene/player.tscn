@@ -13,7 +13,7 @@ size = Vector2(80, 2)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cypby"]
 size = Vector2(165.5, 86)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1862613727 node_paths=PackedStringArray("nameLabel", "jumpCheckArea", "mountPoint", "pickedCheckArea")]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1862613727 node_paths=PackedStringArray("nameLabel", "jumpCheckArea", "mountPoint", "pickedCheckArea", "img")]
 position = Vector2(1, 0)
 collision_layer = 2
 script = ExtResource("1_hjaqi")
@@ -21,6 +21,7 @@ nameLabel = NodePath("Label")
 jumpCheckArea = NodePath("Area2D")
 mountPoint = NodePath("mountPoint")
 pickedCheckArea = NodePath("Area2D2")
+img = NodePath("哈！")
 metadata/_edit_horizontal_guides_ = [95.0, 100.0]
 metadata/_edit_vertical_guides_ = [95.0, 100.0]
 

@@ -13,7 +13,6 @@ func clearItem():
 	for x in items:
 		var item:Item = items[x]
 		item.queue_free()
-		items.erase(x)
 	items = {}
 	cursor = 0
 
@@ -49,8 +48,8 @@ func removeItem(id):
 	items.erase(id)
 	
 #注册一个新物品到映射表
-@rpc("any_peer","call_local","reliable")
 func regNewItem(iName:String,res:PackedScene,nameSpace:String="vanilla"):
+	#print("[INFO]注册物品:",nameSpace + (':' + iName))
 	var itemName = nameSpace + (':' + iName)
 	if itemName in itemTable:
 		print("[WARN]物品:",itemName,"已经被注册过了！")

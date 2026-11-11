@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bac8nsjd2wjws"]
+
+[ext_resource type="Script" uid="uid://cjxfvms5y7nf6" path="res://game/level/map/blocks/basicBlock.gd" id="1_b07aa"]
+[ext_resource type="Texture2D" uid="uid://bri1br5j86b71" path="res://assets/IMG/砖块.png" id="1_l4u33"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cypby"]
+size = Vector2(100, 100)
+
+[node name="Brick" type="StaticBody2D" unique_id=1030009224]
+collision_layer = 129
+collision_mask = 129
+script = ExtResource("1_b07aa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2133332941]
+shape = SubResource("RectangleShape2D_cypby")
+
+[node name="砖块" type="Sprite2D" parent="." unique_id=921991959]
+position = Vector2(-2.3841858e-07, 4.5474735e-13)
+scale = Vector2(3.1250002, 3.1249998)
+texture = ExtResource("1_l4u33")

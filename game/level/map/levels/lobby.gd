@@ -5,9 +5,10 @@ extends Level
 func _exportMap() -> Array[Array]:
 	var arr:Array[Array] = []
 	for x in 6:
+		arr.append(newBrick(x,1))
 		arr.append(newBlock(x,5))
 		arr.append(newRed(x,10))
-		arr.append(newWeapon(3,1))
+	arr.append(newWeapon(3,1))
 	print("数组为:",arr)
 	return arr
 	
@@ -16,6 +17,9 @@ func newBlock(x,y):
 	
 func newRed(x,y):
 	return [x,y,"ohno",{},"block",null,null]
+
+func newBrick(x,y):
+	return [x,y,"redBrick",{},"block",null,null]
 
 func newWeapon(x,y):
 	return [x,y,"steelPipeGun",{},"item",null]

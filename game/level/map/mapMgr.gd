@@ -14,14 +14,6 @@ func _ready() -> void:
 	add_child(map)
 	resetTable()
 
-	yellowBlock = load("res://game/level/scene/map/yellowBlock.tscn")
-	redBlock = load ("res://game/level/scene/map/redBlock.tscn")
-	var lobby = load("res://game/level/map/levels/lobby.gd")
-	
-	regLevel("lobby",lobby.new())
-	regBlock("ohno",redBlock)
-	regBlock("yellowBlock",yellowBlock)
-
 #方块集合，键是"命名空间:方块名字"，值为方块的场景，实现mapBlock.gd
 var blockSet: Dictionary[String, PackedScene] = {}
 var levelSet:Dictionary[String,Level] = {}
