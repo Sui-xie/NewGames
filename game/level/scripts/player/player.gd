@@ -39,7 +39,7 @@ func _physics_process(delta: float) -> void:
 	velocity.y -= ctx.gravity*delta
 	move_and_slide()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	nameLabel.text = nickName + ":%d" % id
 	if isClient():
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
@@ -49,10 +49,10 @@ func _process(delta: float) -> void:
 		position = position.lerp(targetPostion,1)
 		return
 
-func calcMountPosition(mousePosition:Vector2 = Vector2.ZERO):
-	if mousePosition == Vector2.ZERO:
-		mousePosition = get_global_mouse_position()
-	var r = (mousePosition - global_position).angle()
+func calcMountPosition(globalMousePosition:Vector2 = Vector2.ZERO):
+	if globalMousePosition == Vector2.ZERO:
+		globalMousePosition = get_global_mouse_position()
+	var r: float = (globalMousePosition - global_position).angle()
 	var p:Vector2 = Vector2.from_angle(r) * 100
 	mountPoint.position = p
 	mountPoint.rotation = r
@@ -97,7 +97,7 @@ func change_zoom(z):
 func queryCanPickedItem()->Item:
 	var items = pickedCheckArea.get_overlapping_bodies()
 	if items.is_empty():return null
-	var current:Item
+	var current:Item = null
 	for x in items:
 		if not (x is Item):continue
 		if ctx.tags.canPicked in x.meta:

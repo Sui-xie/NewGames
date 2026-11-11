@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://iubdehq4ysrj"]
+
+[ext_resource type="Script" uid="uid://cjxfvms5y7nf6" path="res://game/level/map/blocks/basicBlock.gd" id="1_kwdml"]
+[ext_resource type="Texture2D" uid="uid://du5gdunoaquvp" path="res://assets/IMG/黄方块.png" id="1_sf4a6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cypby"]
+size = Vector2(100, 100)
+
+[node name="YellowBlock" type="StaticBody2D" unique_id=53538261]
+collision_layer = 129
+collision_mask = 129
+script = ExtResource("1_kwdml")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1137169149]
+shape = SubResource("RectangleShape2D_cypby")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2033115069]
+position = Vector2(1.9073486e-06, 1.9073486e-06)
+scale = Vector2(1.0000001, 1.0000001)
+texture = ExtResource("1_sf4a6")

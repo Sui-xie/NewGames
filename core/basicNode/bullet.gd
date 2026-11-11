@@ -9,9 +9,9 @@ var speed:float
 func _ready() -> void:
 	pass
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 @rpc("any_peer","call_local","reliable")
 func hit(target:String):
-	print("[WARN]未被重写的hit方法")
+	print("[WARN]未被重写的hit方法/target:",target)

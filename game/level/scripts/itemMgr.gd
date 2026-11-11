@@ -1,4 +1,4 @@
-﻿extends Node
+extends Node
 class_name ItemMgr
 
 var items:Dictionary = {}#顺序列表，键为数字id，值为一个数组，表达初始化时的parms
@@ -7,6 +7,15 @@ var cursor:int = 0
 
 func _ready() -> void:
 	ctx.on("playerJoin",syncItem)
+	ctx.on("nextLevel",clearItem)
+
+func clearItem():
+	for x in items:
+		var item:Item = items[x]
+		item.queue_free()
+		items.erase(x)
+	items = {}
+	cursor = 0
 
 #通过物品名和命名空间查找一个物品
 @rpc("any_peer","call_local","reliable")
@@ -40,8 +49,8 @@ func removeItem(id):
 	
 #注册一个新物品到映射表
 @rpc("any_peer","call_local","reliable")
-func regNewItem(name:String,res:PackedScene,nameSpace:String="vanilla"):
-	var itemName = nameSpace + (':' + name)
+func regNewItem(iName:String,res:PackedScene,nameSpace:String="vanilla"):
+	var itemName = nameSpace + (':' + iName)
 	if itemName in itemTable:
 		print("[WARN]物品:",itemName,"已经被注册过了！")
 		return

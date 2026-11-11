@@ -35,6 +35,8 @@ func createGame() -> int:
 		ctx.getService('playerMgr').playerJoin(multiplayer.get_unique_id())
 		var a:ItemMgr = ctx.getService('itemMgr')
 		a.addItem("steelPipeGun")
+		var b:MapMgr = ctx.getService('mapMgr')
+		b.nextLevel.rpc('lobby')
 	else:
 		var net := ENetMultiplayerPeer.new()
 		var err := net.create_server(parms['port'], parms['maxPlayer'])
@@ -45,12 +47,17 @@ func createGame() -> int:
 			return err
 		multiplayer.multiplayer_peer = net
 		var mgr:PlayerMgr = ctx.getService('playerMgr')
-		multiplayer.peer_connected.connect(mgr.playerJoin)
-		multiplayer.peer_disconnected.connect(mgr.playerLeave)
-		ctx.getService('playerMgr').playerJoin(multiplayer.get_unique_id())
-		ctx.isServer = true
 		var a:ItemMgr = ctx.getService('itemMgr')
 		a.addItem("steelPipeGun")
+		var b:MapMgr = ctx.getService('mapMgr')
+		b.nextLevel.rpc('lobby')
+		#multiplayer.peer_connected.connect(mgr.playerJoin)
+		#multiplayer.peer_disconnected.connect(mgr.playerLeave)
+		multiplayer.peer_connected.connect(playerJoin)
+		multiplayer.peer_disconnected.connect(playerLeave)
+		ctx.getService('playerMgr').playerJoin(multiplayer.get_unique_id())
+		ctx.isServer = true
+		
 		
 	return OK
 	
@@ -68,6 +75,16 @@ func joinGame():
 		ctx.switchMainScene('menu')
 		ctx.broadCast("[ERROR]连接失败，错误码:",peer)
 
+func playerJoin(peerId):
+	var pMgr:PlayerMgr = ctx.getService('playerMgr')
+	var mMgr:MapMgr = ctx.getService('mapMgr')
+	var n: String = mMgr.currentMapName[0]+ ':' + mMgr.currentMapName[1]
+	mMgr.toCureentMap.rpc_id(peerId,n)
+	pMgr.playerJoin(peerId)
+
+func playerLeave(peerId):
+	var pMgr:PlayerMgr = ctx.getService('playerMgr')
+	pMgr.playerLeave(peerId)
 
 func initGameScene():
 	var ui = uiLayer.instantiate()
